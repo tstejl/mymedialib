@@ -1,0 +1,60 @@
+{
+  "name": "my-media-lib",
+  "description": "local media library",
+  "author": "Zhaoxuan Li",
+  "version": "0.1.0",
+  "private": true,
+  "build": {
+    "appId": "com.mymedialib"
+  },
+  "main": "public/electron.js",
+  "dependencies": {
+    "@types/jest": "24.0.13",
+    "@types/node": "12.0.7",
+    "@types/react": "16.8.19",
+    "@types/react-dom": "16.8.4",
+    "antd": "^3.19.2",
+    "babel-plugin-import": "^1.12.0",
+    "cross-env": "^5.2.0",
+    "customize-cra": "^0.2.13",
+    "electron-is-dev": "^1.1.0",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "react": "^16.8.6",
+    "react-app-rewired": "^2.1.3",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1",
+    "typescript": "3.5.1"
+  },
+  "scripts": {
+    "react-start": "react-app-rewired start",
+    "react-build": "react-app-rewired build",
+    "react-test": "react-app-rewired test --env=jsdom",
+    "react-eject": "react-scripts eject",
+    "electron-build": "electron-builder",
+    "release": "yarn react-build && electron-builder --publish=always",
+    "build": "yarn react-build && yarn electron-build",
+    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "electron": "^5.0.3",
+    "electron-builder": "^20.43.0",
+    "wait-on": "^3.2.0"
+  }
+}
