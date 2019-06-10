@@ -1,8 +1,10 @@
-const electron = require("electron");
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
-const path = require("path");
+const { app, BrowserWindow, Menu } = require("electron");
+const { join } = require("path");
+// const { existsSync } = require('fs');
 const isDev = require("electron-is-dev");
+
+// const JDB_PATH = './jdb.sqlite3';
+
 let mainWindow;
 
 function createWindow() {
@@ -10,10 +12,11 @@ function createWindow() {
   mainWindow.loadURL(
     isDev
       ? "http://localhost:3000"
-      : `file://${path.join(__dirname, "../build/index.html")}`
+      : `file://${join(__dirname, "../build/index.html")}`
   );
   mainWindow.on("closed", () => (mainWindow = null));
 }
+
 app.on("ready", createWindow);
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
